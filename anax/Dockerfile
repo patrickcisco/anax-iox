@@ -1,0 +1,11 @@
+FROM openhorizon/amd64_anax:latest
+ARG CLUSTER_ID
+ARG HZN_EXCHANGE_USER_AUTH
+ARG HZN_EXCHANGE_NODE_AUTH
+
+COPY horizon.cfg /etc/default/horizon
+COPY forcisco.crt /usr/local/share/ca-certificates
+RUN update-ca-certificates
+ENV HZN_ORG_ID=$CLUSTER_ID
+ENV HZN_EXCHANGE_USER_AUTH=$HZN_EXCHANGE_USER_AUTH
+ENV HZN_EXCHANGE_NODE_AUTH=$HZN_EXCHANGE_NODE_AUTH

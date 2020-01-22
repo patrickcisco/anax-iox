@@ -1,0 +1,31 @@
+descriptor-schema-version: "2.3"
+
+info:
+  name: "Cisco IOx KVM Alpine Docker Application"
+  description: "KVM Alpine Docker Daemon Application"
+  version: "2.2"
+  author-link: "http://www.cisco.com"
+  author-name: "Cisco Systems"
+
+app:
+  # Indicate app type (vm, lxc, docker)
+  type: vm
+  cpuarch: "x86_64"
+  resources:
+    profile: custom
+    cpu: 7000
+    memory: 1024
+    disk: 8000
+    vcpu: 2
+    network:
+      -
+        interface-name: eth0
+# Specify runtime and startup
+  startup:
+    disks:
+       -
+        target-dev: "hdc"
+        target:
+          - '"docker run -t --restart always --name amd64_anax --privileged -p 127.0.0.1:8081:80 -v /var/run/docker.sock:/var/run/docker.sock -v /var/tmp/horizon:/var/tmp/horizon anaxcisco"'
+        file: "alpine37-docker.v1.0.qcow2"
+    qemu-guest-agent: False
