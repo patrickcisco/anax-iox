@@ -62,3 +62,11 @@ Once those environment variables are set, you can build the container.
 cd anax
 make build
 ```
+
+## Building your IOx application
+
+To build the IOx application from the qcow2 image, you can leverage the ioxclient tool [https://developer.cisco.com/docs/iox/#!what-is-ioxclient](https://developer.cisco.com/docs/iox/#!what-is-ioxclient)
+
+```
+make build 
+```
